@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+/**
+ * Shell raíz: solo enruta. El navbar y el footer viven en LayoutPublico.
+ */
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  standalone: true,
+  imports: [RouterOutlet],
+  template: '<router-outlet />',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  protected readonly title = signal('projecto_angular');
-}
+export class App {}

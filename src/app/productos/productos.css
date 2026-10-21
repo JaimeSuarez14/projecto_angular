@@ -1,0 +1,14 @@
+h1{
+  color: blue;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+p{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: lighter;
+}
+
+section {
+  background-color: beige;
+  color:black
+}

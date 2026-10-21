@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+/* ============================================================
+   Paleta corporativa inspirada en la identidad náutica de
+   Punto Azul, adaptada a Cevichería Suárez:
+   - mar-*    → azul mar (acento fresco de marca)
+   - marino-* → azul marino profundo (fondos elegantes)
+   - oro-*    → dorado cálido (CTA y precios destacados)
+   ============================================================ */
+@theme {
+  /* Tipografías de alta gama: Manrope (texto) + Cormorant Garamond (títulos) */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+
+  /* Azul mar */
+  --color-mar-50: #ecf8fe;
+  --color-mar-100: #d5eefb;
+  --color-mar-200: #aeddf7;
+  --color-mar-300: #7cc6ef;
+  --color-mar-400: #43a9e2;
+  --color-mar-500: #1f8fd0;
+  --color-mar-600: #1572ad;
+  --color-mar-700: #145b8a;
+  --color-mar-800: #144a6e;
+  --color-mar-900: #143d5c;
+  --color-mar-950: #0d2a42;
+
+  /* Azul marino profundo */
+  --color-marino-50: #f3f6fa;
+  --color-marino-100: #e5eaf2;
+  --color-marino-200: #c8d3e3;
+  --color-marino-300: #9db1cd;
+  --color-marino-700: #17293f;
+  --color-marino-800: #101e31;
+  --color-marino-900: #0a1524;
+  --color-marino-950: #050b16;
+
+  /* Dorado cálido */
+  --color-oro-100: #faf0d6;
+  --color-oro-200: #f4e2ac;
+  --color-oro-300: #ecd07c;
+  --color-oro-400: #e0b957;
+  --color-oro-500: #d4a732;
+  --color-oro-600: #b3861f;
+  --color-oro-700: #8f6a17;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-600 antialiased;
+  }
+
+  ::selection {
+    @apply bg-mar-500 text-white;
+  }
+}

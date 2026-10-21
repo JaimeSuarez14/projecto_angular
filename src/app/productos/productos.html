@@ -1,0 +1,38 @@
+<section>
+  <h1>{{ title() }}</h1>
+  <p>Esta pagina tiene el detalle de los productos</p>
+
+  <table>
+    <caption style="font-size: bold;">
+      Lista de Productos de la Cevicheria
+    </caption>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of productoService.productos(); track item.id) {
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.precio }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="3">No hay productos</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <p [textContent]="detalle"></p>
+  <button (click)="mostrarMensaje()">Ver Detalle</button>
+  @if (mensaje) {
+    <p style="color: green; font-size: bold">{{ mensaje }}</p>
+  } @else {
+    <p>Has click para ver el mensaje oculto</p>
+  }
+</section>

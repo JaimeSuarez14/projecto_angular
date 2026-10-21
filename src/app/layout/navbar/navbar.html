@@ -1,0 +1,128 @@
+<header [class]="clasesBarra()">
+  <!-- Barra utilitaria (solo escritorio): contacto y horario -->
+  <div class="hidden border-b border-white/10 lg:block">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-10 py-2">
+      <a
+        [attr.href]="'tel:' + telefonoLimpio"
+        class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300 transition-colors duration-300 hover:text-oro-400"
+      >
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        {{ datos.telefono }}
+      </a>
+      <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+        <svg class="h-3.5 w-3.5 text-oro-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        Mar – Dom · 11:30 a 22:00
+      </span>
+    </div>
+  </div>
+
+  <!-- Barra principal -->
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <a routerLink="/bienvenido" (click)="cerrarMenu()" class="group flex items-center gap-3" aria-label="Ir a la página de bienvenida">
+      <span class="flex h-11 w-11 items-center justify-center rounded-full bg-mar-600 text-white shadow-lg shadow-mar-600/40 ring-2 ring-oro-400/60 transition-transform duration-300 group-hover:scale-105">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="5" r="3"/><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+        </svg>
+      </span>
+      <span class="font-display text-2xl font-semibold tracking-wide text-white">
+        Cevichería <span class="text-oro-400">Suárez</span>
+      </span>
+    </a>
+
+    <!-- Enlaces de escritorio -->
+    <div class="hidden items-center gap-8 lg:flex">
+      @for (enlace of datos.enlacesNav; track enlace.ruta) {
+        <a
+          [routerLink]="enlace.ruta"
+          routerLinkActive="text-oro-400"
+          class="text-[13px] font-bold uppercase tracking-[0.15em] text-white/90 transition-colors duration-300 hover:text-oro-400"
+        >
+          {{ enlace.etiqueta }}
+        </a>
+      }
+      <a
+        routerLink="/reservas"
+        class="inline-flex items-center justify-center rounded-full bg-oro-500 px-6 py-2.5 text-xs font-extrabold uppercase tracking-[0.18em] text-marino-950 shadow-md shadow-oro-500/25 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-oro-400 hover:shadow-lg hover:shadow-oro-500/35"
+      >
+        Reserva Aquí
+      </a>
+    </div>
+
+    <!-- Botón hamburguesa (móvil) -->
+    <button
+      type="button"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-xl text-white ring-1 ring-white/20 transition-colors duration-300 hover:bg-white/10 lg:hidden"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAbierto()"
+      aria-controls="menu-movil"
+      aria-label="Abrir o cerrar el menú de navegación"
+    >
+      @if (menuAbierto()) {
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      } @else {
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      }
+    </button>
+  </nav>
+</header>
+
+<!-- Panel lateral del menú móvil, controlado con Signals -->
+<div
+  id="menu-movil"
+  class="fixed inset-0 z-40 lg:hidden"
+  [class]="menuAbierto() ? 'pointer-events-auto' : 'pointer-events-none'"
+  aria-hidden="{{ !menuAbierto() }}"
+>
+  <!-- Fondo oscurecido: al hacer clic cierra el menú -->
+  <div
+    class="absolute inset-0 bg-marino-950/70 backdrop-blur-sm transition-opacity duration-300"
+    [class]="menuAbierto() ? 'opacity-100' : 'opacity-0'"
+    (click)="cerrarMenu()"
+  ></div>
+
+  <!-- Cajón deslizante -->
+  <nav
+    class="absolute left-0 top-0 flex h-full w-80 max-w-[85vw] flex-col justify-between bg-marino-900 px-8 pb-10 pt-28 shadow-2xl transition-transform duration-300 ease-out"
+    [class]="menuAbierto() ? 'translate-x-0' : '-translate-x-full'"
+  >
+    <ul class="space-y-1">
+      @for (enlace of datos.enlacesNav; track enlace.ruta) {
+        <li>
+          <a
+            [routerLink]="enlace.ruta"
+            routerLinkActive="text-oro-400"
+            (click)="cerrarMenu()"
+            class="block rounded-xl px-4 py-3 text-base font-bold uppercase tracking-wider text-slate-200 transition-colors duration-300 hover:bg-white/5 hover:text-oro-400"
+          >
+            {{ enlace.etiqueta }}
+          </a>
+        </li>
+      }
+      <li class="pt-4">
+        <a
+          routerLink="/reservas"
+          (click)="cerrarMenu()"
+          class="block rounded-xl bg-oro-500 px-4 py-3.5 text-center text-sm font-extrabold uppercase tracking-[0.18em] text-marino-950 shadow-lg shadow-oro-500/25 transition-colors duration-300 hover:bg-oro-400"
+        >
+          Reserva Aquí
+        </a>
+      </li>
+    </ul>
+
+    <div class="border-t border-white/10 pt-6 text-xs text-slate-400">
+      <p class="font-bold uppercase tracking-[0.2em] text-oro-400">Horario</p>
+      @for (horario of datos.horarios; track horario.dias) {
+        <p class="mt-2">{{ horario.dias }} · {{ horario.horas }}</p>
+      }
+      <p class="mt-3">{{ datos.telefono }}</p>
+    </div>
+  </nav>
+</div>
