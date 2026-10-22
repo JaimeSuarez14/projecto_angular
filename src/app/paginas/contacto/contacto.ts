@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { ProductoService } from '../../servicios/producto-service';
-import { LocalRestaurante } from '../../interfaces/restaurant.interface';
-import { Revelar } from '../../shared/directivas/revelar';
+import { NgOptimizedImage } from '@angular/common';
+import { ProductoService } from '../../catalogo/producto-service';
+import { LocalRestaurante } from '../../catalogo/restaurant.interface';
+import { Revelar } from '../../shared/revelar';
 
 /**
  * Locales y contacto: tarjetas por ciudad con enlaces a mapa/teléfono y un
@@ -10,7 +11,7 @@ import { Revelar } from '../../shared/directivas/revelar';
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [Revelar],
+  imports: [Revelar, NgOptimizedImage],
   templateUrl: './contacto.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

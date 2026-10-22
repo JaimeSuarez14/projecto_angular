@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Revelar } from '../../shared/directivas/revelar';
-import { ProductoService } from '../../servicios/producto-service';
+import { Revelar } from '../../shared/revelar';
+import { ProductoService } from '../../catalogo/producto-service';
 
 /** Hitos del restaurante para la línea de tiempo. */
 interface HitoHistoria {
@@ -14,7 +15,7 @@ interface HitoHistoria {
 @Component({
   selector: 'app-historia',
   standalone: true,
-  imports: [RouterLink, Revelar],
+  imports: [RouterLink, Revelar, NgOptimizedImage],
   templateUrl: './historia.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,4 +1,4 @@
-import { Categoria, DatosRestaurante } from '../interfaces/restaurant.interface';
+import { Categoria, DatosRestaurante } from './restaurant.interface';
 
 /**
  * Construye la URL de una imagen alojada en Wikimedia Commons al ancho
@@ -25,8 +25,8 @@ export const DATOS_RESTAURANTE: DatosRestaurante = {
   lema: 'La frescura del mar, servida con elegancia',
   descripcion:
     'Más de dos décadas siendo la casa del ceviche ecuatoriano: pescado fresco del día, limón sutil y recetas de familia que viajaron de Manta hacia toda la costa.',
-  telefono: '+593 99 123 4567',
-  whatsapp: 'https://wa.me/593991234567',
+  telefono: '+51 993 007 485',
+  whatsapp: 'https://wa.me/51993007485',
   correo: 'hola@cevicheriasuarez.com',
   aniosTradicion: 29,
   enlacesNav: [

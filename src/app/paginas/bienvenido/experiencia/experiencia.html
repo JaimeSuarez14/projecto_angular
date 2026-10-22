@@ -4,22 +4,20 @@
     <div appRevelar class="relative pb-14 pr-10 sm:pr-16">
       <div class="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl shadow-marino-900/15">
         <img
-          [src]="urlMar"
+          [ngSrc]="urlMar"
+          fill
           alt="La ola del océano Pacífico, origen de la frescura de la carta"
-          loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover"
+          class="object-cover"
         />
       </div>
       <div
         class="absolute bottom-0 right-0 aspect-square w-3/5 overflow-hidden rounded-2xl ring-8 ring-white"
       >
         <img
-          [src]="urlCocina"
+          [ngSrc]="urlCocina"
+          fill
           alt="Nuestra cocina cortando los ingredientes del mar al momento"
-          loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+          class="object-cover transition-transform duration-500 ease-out hover:scale-105"
         />
       </div>
       <div

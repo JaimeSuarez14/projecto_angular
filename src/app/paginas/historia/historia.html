@@ -1,11 +1,10 @@
 <header class="relative overflow-hidden bg-marino-950 text-white">
   <img
-    [src]="urlCabecera"
+    [ngSrc]="urlCabecera"
+    fill
     alt=""
     aria-hidden="true"
-    loading="lazy"
-    decoding="async"
-    class="absolute inset-0 h-full w-full object-cover opacity-30"
+    class="object-cover opacity-30"
   />
   <div class="absolute inset-0 bg-gradient-to-b from-marino-950/60 via-marino-950/55 to-marino-950/95"></div>
   <div class="relative mx-auto max-w-7xl px-6 pb-16 pt-36 lg:px-10 lg:pt-44">
@@ -19,7 +18,7 @@
   </div>
 </header>
 
-<main class="bg-white pb-24">
+<div class="bg-white pb-24">
   <div class="mx-auto max-w-7xl px-6 lg:px-10">
     <!-- Valores -->
     <section class="grid gap-10 py-20 lg:grid-cols-3" appRevelar>
@@ -84,12 +83,11 @@
     <section class="relative overflow-hidden rounded-3xl bg-marino-950 px-8 py-14 text-center text-white sm:px-14">
       <div class="relative mx-auto max-w-2xl" appRevelar>
         <img
-          [src]="urlCocina"
+          [ngSrc]="urlCocina"
+          fill
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 h-full w-full rounded-3xl object-cover opacity-20"
+          class="rounded-3xl object-cover opacity-20"
         />
         <div class="relative">
           <h2 class="font-display text-3xl font-semibold sm:text-4xl">
@@ -108,4 +106,4 @@
       </div>
     </section>
   </div>
-</main>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { Categoria, DatosRestaurante, Producto } from '../interfaces/restaurant.interface';
-import { CATEGORIAS_MENU, DATOS_RESTAURANTE, urlWikimedia } from '../data/datos-restaurante';
+import { Categoria, DatosRestaurante, Producto } from './restaurant.interface';
+import { CATEGORIAS_MENU, DATOS_RESTAURANTE, urlWikimedia } from './datos-restaurante';
 
 /**
  * Catálogo precargado en memoria (mientras no exista base de datos).
@@ -28,7 +28,7 @@ const PRODUCTOS_INICIALES: readonly Producto[] = [
     id: 'chocho',
     nombre: 'Chocho',
     descripcion:
-      'Chocho fresco al limón con tomate, cebolla, cilantro y aceite de achiote. Nuestro entrante ligero y 100% tradicional.',
+      'Chocho fresco al limón con tomate, cebolla, culantro y aceite de achiote. Nuestro entrante ligero y 100% tradicional.',
     precio: 3,
     categoria: 'entremeses',
     imagenUrl:

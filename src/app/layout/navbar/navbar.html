@@ -39,6 +39,7 @@
         <a
           [routerLink]="enlace.ruta"
           routerLinkActive="text-oro-400"
+          ariaCurrentWhenActive="page"
           class="text-[13px] font-bold uppercase tracking-[0.15em] text-white/90 transition-colors duration-300 hover:text-oro-400"
         >
           {{ enlace.etiqueta }}
@@ -79,7 +80,8 @@
   id="menu-movil"
   class="fixed inset-0 z-40 lg:hidden"
   [class]="menuAbierto() ? 'pointer-events-auto' : 'pointer-events-none'"
-  aria-hidden="{{ !menuAbierto() }}"
+  [attr.aria-hidden]="!menuAbierto()"
+  [attr.inert]="menuAbierto() ? null : ''"
 >
   <!-- Fondo oscurecido: al hacer clic cierra el menú -->
   <div
@@ -99,6 +101,7 @@
           <a
             [routerLink]="enlace.ruta"
             routerLinkActive="text-oro-400"
+            ariaCurrentWhenActive="page"
             (click)="cerrarMenu()"
             class="block rounded-xl px-4 py-3 text-base font-bold uppercase tracking-wider text-slate-200 transition-colors duration-300 hover:bg-white/5 hover:text-oro-400"
           >

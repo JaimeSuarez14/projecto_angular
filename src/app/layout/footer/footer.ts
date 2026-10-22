@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../servicios/producto-service';
+import { ProductoService } from '../../catalogo/producto-service';
 
 /** Footer completo: marca, enlaces, horarios, locales y redes sociales. */
 @Component({

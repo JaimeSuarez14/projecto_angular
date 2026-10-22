@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../servicios/producto-service';
-import { CategoriaId, FiltroCategoria } from '../../interfaces/restaurant.interface';
-import { Revelar } from '../../shared/directivas/revelar';
-import { urlWikimedia } from '../../data/datos-restaurante';
+import { ProductoService } from '../../catalogo/producto-service';
+import { CategoriaId, FiltroCategoria } from '../../catalogo/restaurant.interface';
+import { Revelar } from '../../shared/revelar';
+import { urlWikimedia } from '../../catalogo/datos-restaurante';
 
 /**
  * La carta completa con filtros por categoría. El estado del filtro y la
@@ -13,7 +13,7 @@ import { urlWikimedia } from '../../data/datos-restaurante';
 @Component({
   selector: 'app-carta',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, Revelar],
+  imports: [RouterLink, CurrencyPipe, Revelar, NgOptimizedImage],
   templateUrl: './carta.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

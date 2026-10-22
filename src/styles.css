@@ -57,4 +57,25 @@
   ::selection {
     @apply bg-mar-500 text-white;
   }
+
+  /* Accesibilidad: foco visible consistente en toda la aplicación */
+  :focus-visible {
+    outline: 2px solid var(--color-mar-500);
+    outline-offset: 3px;
+  }
+}
+
+/* Accesibilidad: respeta la preferencia del sistema de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

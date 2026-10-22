@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../../servicios/producto-service';
-import { CategoriaId, Producto } from '../../../interfaces/restaurant.interface';
-import { Revelar } from '../../../shared/directivas/revelar';
+import { ProductoService } from '../../../catalogo/producto-service';
+import { CategoriaId } from '../../../catalogo/restaurant.interface';
+import { Revelar } from '../../../shared/revelar';
 
 /**
  * Especialidades de la casa: el grid reacciona de forma automática a los
@@ -12,7 +12,7 @@ import { Revelar } from '../../../shared/directivas/revelar';
 @Component({
   selector: 'app-platos-destacados',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, Revelar],
+  imports: [RouterLink, CurrencyPipe, Revelar, NgOptimizedImage],
   templateUrl: './platos-destacados.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

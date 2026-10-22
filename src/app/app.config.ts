@@ -15,7 +15,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
 
-    // Arquitectura zoneless: la detección de cambios se activa por señales.
+    // Arquitectura zoneless: desde Angular 21 es el modo por defecto; se
+    // declara de forma explícita para documentar la intención del proyecto.
     provideZonelessChangeDetection(),
 
     provideRouter(

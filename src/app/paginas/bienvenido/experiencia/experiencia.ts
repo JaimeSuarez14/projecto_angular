@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../../servicios/producto-service';
-import { Revelar } from '../../../shared/directivas/revelar';
+import { ProductoService } from '../../../catalogo/producto-service';
+import { Revelar } from '../../../shared/revelar';
 
 /**
  * Bloque dividido (imagen + texto) sobre la frescura del mar y la
@@ -10,7 +11,7 @@ import { Revelar } from '../../../shared/directivas/revelar';
 @Component({
   selector: 'app-experiencia',
   standalone: true,
-  imports: [RouterLink, Revelar],
+  imports: [RouterLink, Revelar, NgOptimizedImage],
   templateUrl: './experiencia.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

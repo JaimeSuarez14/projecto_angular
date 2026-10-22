@@ -8,7 +8,7 @@
   </div>
 </header>
 
-<main class="bg-slate-50 pb-24">
+<div class="bg-slate-50 pb-24">
   <div class="mx-auto max-w-7xl px-6 lg:px-10">
     <div class="grid gap-10 pt-16 lg:grid-cols-5">
       <!-- Lista de locales -->
@@ -21,11 +21,10 @@
           >
             <figure class="relative h-40 sm:h-auto">
               <img
-                [src]="local.imagenUrl"
+                [ngSrc]="local.imagenUrl"
+                fill
                 [alt]="'Ambiente del local de ' + local.ciudad"
-                loading="lazy"
-                decoding="async"
-                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                class="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
             </figure>
             <div class="p-6">
@@ -103,7 +102,7 @@
           <h2 class="font-display text-2xl font-semibold text-marino-900">Escríbenos</h2>
 
           @if (enviado()) {
-            <div class="mt-6 rounded-xl bg-mar-50 px-4 py-4 ring-1 ring-mar-200">
+            <div class="mt-6 rounded-xl bg-mar-50 px-4 py-4 ring-1 ring-mar-200" role="status" aria-live="polite">
               <p class="text-sm font-semibold text-mar-800">
                 ¡Mensaje enviado! Te responderemos al correo durante el día.
               </p>
@@ -120,6 +119,7 @@
               <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Nombre</span>
               <input
                 type="text"
+                autocomplete="name"
                 [value]="nombre()"
                 (input)="captoNombre($event)"
                 placeholder="¿A quién saludamos?"
@@ -130,6 +130,7 @@
               <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Correo</span>
               <input
                 type="email"
+                autocomplete="email"
                 [value]="correo()"
                 (input)="captoCorreo($event)"
                 placeholder="tucorreo@ejemplo.com"
@@ -148,7 +149,7 @@
             </label>
 
             @if (mensajeError(); as error) {
-              <p class="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+              <p class="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700" role="alert">
                 {{ error }}
               </p>
             }
@@ -164,4 +165,4 @@
       </div>
     </div>
   </div>
-</main>
+</div>

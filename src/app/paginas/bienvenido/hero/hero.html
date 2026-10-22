@@ -1,13 +1,14 @@
 <section class="relative flex min-h-svh items-end overflow-hidden bg-marino-950 text-white">
   <!-- Ceviche de camarón ecuatoriano · Wikimedia Commons (CC BY-SA) -->
   <img
-    [src]="urlHero"
+    [ngSrc]="urlHero"
+    fill
+    priority
     alt="Ceviche de camarón ecuatoriano servido en plato blanco con patacones"
-    class="absolute inset-0 h-full w-full object-cover opacity-55"
-    fetchpriority="high"
+    class="object-cover opacity-55"
   />
-  <div class="absolute inset-0 bg-gradient-to-r from-marino-950 via-marino-950/80 to-marino-950/25"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-marino-950 via-transparent to-marino-950/70"></div>
+  <div class="absolute inset-0 bg-linear-to-r from-marino-950 via-marino-950/80 to-marino-950/25"></div>
+  <div class="absolute inset-0 bg-linear-to-t from-marino-950 via-transparent to-marino-950/70"></div>
 
   <div class="relative mx-auto w-full max-w-7xl px-6 pb-32 pt-40 lg:px-10 lg:pb-44">
     <div class="max-w-2xl">
@@ -75,7 +76,7 @@
     class="absolute bottom-24 left-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors duration-300 hover:border-oro-400 hover:text-oro-400 md:flex"
     aria-label="Bajar a la sección de especialidades"
   >
-    <svg class="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <svg class="h-5 w-5 animate-bounce motion-reduce:animate-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="m6 9 6 6 6-6"/>
     </svg>
   </button>

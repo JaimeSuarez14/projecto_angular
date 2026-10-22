@@ -1,4 +1,5 @@
 import {
+  DOCUMENT,
   Directive,
   ElementRef,
   OnDestroy,
@@ -14,6 +15,9 @@ import {
  * Uso:
  *   <div appRevelar>…</div>                    → aparece sin retardo
  *   <div [appRevelar]="120">…</div>            → retardo de 120 ms (efecto cascada)
+ *
+ * Respeta `prefers-reduced-motion`: si el usuario pide menos movimiento, el
+ * contenido se muestra de inmediato y sin animación.
  */
 @Directive({
   selector: '[appRevelar]',
@@ -27,9 +31,15 @@ export class Revelar implements OnDestroy {
   });
 
   private readonly nodo: HTMLElement = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly prefiereMenosMovimiento =
+    inject(DOCUMENT).defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches ?? false;
   private observador: IntersectionObserver | null = null;
 
   constructor() {
+    if (this.prefiereMenosMovimiento) {
+      return;
+    }
+
     // Estado inicial oculto y desplazado; las clases de Tailwind se
     // remueven al detectar el elemento en pantalla.
     this.nodo.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-6');

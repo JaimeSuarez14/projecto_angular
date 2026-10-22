@@ -3,18 +3,21 @@
 <!-- Especialidades (grid reactivo desde ProductoService) -->
 <app-platos-destacados />
 
-<!-- Experiencia / historia -->
-<app-experiencia />
+<!-- Experiencia / historia: se carga al acercarse al viewport (y se precarga en idle) -->
+@defer (on viewport; prefetch on idle) {
+  <app-experiencia />
+} @placeholder (minimum 300ms) {
+  <div class="min-h-[34rem] bg-white" aria-hidden="true"></div>
+}
 
 <!-- Banda final de reservas -->
 <section class="relative overflow-hidden bg-marino-950 py-24 text-center text-white">
   <img
-    [src]="urlBanda"
+    [ngSrc]="urlBanda"
+    fill
     alt=""
     aria-hidden="true"
-    loading="lazy"
-    decoding="async"
-    class="absolute inset-0 h-full w-full object-cover opacity-25"
+    class="object-cover opacity-25"
   />
   <div class="absolute inset-0 bg-marino-950/75"></div>
 

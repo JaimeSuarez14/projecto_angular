@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DOCUMENT, computed, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../../servicios/producto-service';
-import { Revelar } from '../../../shared/directivas/revelar';
-import { urlWikimedia } from '../../../data/datos-restaurante';
+import { ProductoService } from '../../../catalogo/producto-service';
+import { Revelar } from '../../../shared/revelar';
+import { urlWikimedia } from '../../../catalogo/datos-restaurante';
 
 /**
  * Banner principal de la página de bienvenida: ceviche ecuatoriano real
@@ -11,12 +12,13 @@ import { urlWikimedia } from '../../../data/datos-restaurante';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [RouterLink, Revelar],
+  imports: [RouterLink, Revelar, NgOptimizedImage],
   templateUrl: './hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Hero {
   private readonly servicioProducto = inject(ProductoService);
+  private readonly documento = inject(DOCUMENT);
 
   protected readonly datos = this.servicioProducto.datos;
   protected readonly totalPlatos = computed(() => this.servicioProducto.productos().length);
@@ -24,6 +26,6 @@ export class Hero {
   protected readonly urlHero = urlWikimedia('CEVICHE_DE_CAMAR%C3%93N_ECUATORIANO.jpg', 1600);
 
   protected bajar(): void {
-    document.getElementById('especialidades')?.scrollIntoView({ behavior: 'smooth' });
+    this.documento.getElementById('especialidades')?.scrollIntoView({ behavior: 'smooth' });
   }
 }

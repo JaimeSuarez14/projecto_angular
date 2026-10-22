@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductoService } from '../../servicios/producto-service';
-import { ReservaMesa } from '../../interfaces/restaurant.interface';
-import { Revelar } from '../../shared/directivas/revelar';
+import { ProductoService } from '../../catalogo/producto-service';
+import { ReservaMesa } from '../../catalogo/restaurant.interface';
+import { Revelar } from '../../shared/revelar';
 
 /**
  * Reservas: todo el formulário vive en Signals (`fecha`, `hora`,

@@ -1,13 +1,14 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DOCUMENT,
   computed,
   effect,
   inject,
   signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ProductoService } from '../../servicios/producto-service';
+import { ProductoService } from '../../catalogo/producto-service';
 
 /**
  * Navbar fijo de la marca. El menú móvil y el estado de scroll se manejan
@@ -19,10 +20,14 @@ import { ProductoService } from '../../servicios/producto-service';
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(window:scroll)': 'alDesplazar()' },
+  host: {
+    '(window:scroll)': 'alDesplazar()',
+    '(document:keydown.escape)': 'cerrarMenu()',
+  },
 })
 export class Navbar {
   private readonly servicioProducto = inject(ProductoService);
+  private readonly documento = inject(DOCUMENT);
   protected readonly datos = this.servicioProducto.datos;
   protected readonly telefonoLimpio = computed(() => this.datos.telefono.replace(/\s+/g, ''));
 
@@ -32,8 +37,11 @@ export class Navbar {
 
   /** Efecto: bloquea el scroll del body mientras el menú móvil está abierto. */
   constructor() {
-    effect(() => {
-      document.body.style.overflow = this.menuAbierto() ? 'hidden' : '';
+    effect((onCleanup) => {
+      this.documento.body.style.overflow = this.menuAbierto() ? 'hidden' : '';
+      onCleanup(() => {
+        this.documento.body.style.overflow = '';
+      });
     });
   }
 
@@ -48,7 +56,7 @@ export class Navbar {
   );
 
   protected alDesplazar(): void {
-    this.desplazado.set(window.scrollY > 40);
+    this.desplazado.set((this.documento.defaultView?.scrollY ?? 0) > 40);
   }
 
   protected alternarMenu(): void {

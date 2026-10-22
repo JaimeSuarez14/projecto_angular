@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Hero } from './hero/hero';
 import { PlatosDestacados } from './platos-destacados/platos-destacados';
 import { Experiencia } from './experiencia/experiencia';
-import { Revelar } from '../../shared/directivas/revelar';
-import { ProductoService } from '../../servicios/producto-service';
+import { Revelar } from '../../shared/revelar';
+import { ProductoService } from '../../catalogo/producto-service';
 
 /**
  * Página de bienvenida (landing) inspirada en Punto Azul: compone el hero,
@@ -13,7 +14,7 @@ import { ProductoService } from '../../servicios/producto-service';
 @Component({
   selector: 'app-bienvenido',
   standalone: true,
-  imports: [RouterLink, Hero, PlatosDestacados, Experiencia, Revelar],
+  imports: [RouterLink, Hero, PlatosDestacados, Experiencia, Revelar, NgOptimizedImage],
   templateUrl: './bienvenido.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
