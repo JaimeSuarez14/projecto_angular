@@ -24,7 +24,7 @@ export const DATOS_RESTAURANTE: DatosRestaurante = {
   nombre: 'Cevichería Suárez',
   lema: 'La frescura del mar, servida con elegancia',
   descripcion:
-    'Más de dos décadas siendo la casa del ceviche ecuatoriano: pescado fresco del día, limón sutil y recetas de familia que viajaron de Manta hacia toda la costa.',
+    'Más de dos décadas siendo la casa del ceviche peruano: pescado fresco del día, limón sutil y recetas de familia que viajaron hacia toda la costa.',
   telefono: '+51 993 007 485',
   whatsapp: 'https://wa.me/51993007485',
   correo: 'hola@cevicheriasuarez.com',
@@ -38,7 +38,7 @@ export const DATOS_RESTAURANTE: DatosRestaurante = {
   redes: [
     { nombre: 'Facebook', url: 'https://facebook.com/cevicheriasuarez', icono: 'facebook' },
     { nombre: 'Instagram', url: 'https://instagram.com/cevicheriasuarez', icono: 'instagram' },
-    { nombre: 'WhatsApp', url: 'https://wa.me/593991234567', icono: 'whatsapp' },
+    { nombre: 'WhatsApp', url: 'https://wa.me/51993007485', icono: 'whatsapp' },
     { nombre: 'TikTok', url: 'https://tiktok.com/@cevicheriasuarez', icono: 'tiktok' },
   ],
   horarios: [
